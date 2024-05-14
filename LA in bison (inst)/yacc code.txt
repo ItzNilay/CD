@@ -1,0 +1,44 @@
+%{
+#include <stdio.h>
+#include <stdlib.h>
+%}
+
+%union {
+    int ival;
+    char *sval;
+}
+
+%token <sval> IDENTIFIER KEYWORD OPERATOR
+%token <ival> DIGIT
+
+%%
+
+program : statement_list
+
+statement_list : statement | statement_list statement
+
+statement : identifier_statement | keyword_statement | operator_statement | digit_statement
+
+identifier_statement : IDENTIFIER { printf("Identifier: %s\n", $1); free($1); }
+
+keyword_statement : KEYWORD { printf("Keyword: %s\n", $1); free($1); }
+
+operator_statement : OPERATOR { printf("Operator: %s\n", $1); }
+
+digit_statement : DIGIT { printf("Digit: %d\n", $1); }
+
+%%
+
+int main() {
+    yyparse();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
+
+int yyerror(char *s) {
+    printf("Error: %s\n", s);
+    return 0;
+}

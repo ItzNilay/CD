@@ -1,0 +1,7 @@
+expression = "3 + (4 * 5) - 6 / 2"
+parser = RecursiveDescentParser(expression)
+result = parser.parse()
+print("Result:", result)
+
+
+Result: 17.0

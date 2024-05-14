@@ -1,0 +1,200 @@
+Sum of n Natural Numbers:
+
+import java.util.Scanner;
+
+public class SumOfNaturalNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+        int sum = 0;
+        for (int i = 1; i <= n; i++) {
+            sum += i;
+        }
+        System.out.println("Sum of first " + n + " natural numbers: " + sum);
+        scanner.close();
+    }
+}
+
+
+
+
+
+Fibonacci Series:
+
+import java.util.Scanner;
+
+public class FibonacciSeries {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of terms: ");
+        int n = scanner.nextInt();
+        int a = 0, b = 1;
+        System.out.print("Fibonacci Series: ");
+        for (int i = 1; i <= n; ++i) {
+            System.out.print(a + " ");
+            int sum = a + b;
+            a = b;
+            b = sum;
+        }
+        scanner.close();
+    }
+}
+
+
+
+
+
+Factorial:
+
+import java.util.Scanner;
+
+public class Factorial {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int n = scanner.nextInt();
+        int factorial = 1;
+        for (int i = 1; i <= n; i++) {
+            factorial *= i;
+        }
+        System.out.println("Factorial of " + n + " is: " + factorial);
+        scanner.close();
+    }
+}
+
+
+
+
+Armstrong Number:
+
+import java.util.Scanner;
+
+public class ArmstrongNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+        int originalNumber, remainder, result = 0;
+        originalNumber = number;
+        while (originalNumber != 0) {
+            remainder = originalNumber % 10;
+            result += Math.pow(remainder, 3);
+            originalNumber /= 10;
+        }
+        if (result == number)
+            System.out.println(number + " is an Armstrong number.");
+        else
+            System.out.println(number + " is not an Armstrong number.");
+        scanner.close();
+    }
+}
+
+
+
+
+
+
+
+
+Palindrome:
+
+import java.util.Scanner;
+
+public class Palindrome {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int n = scanner.nextInt();
+        int reversedNumber = 0, remainder, originalNumber;
+        originalNumber = n;
+        while (n != 0) {
+            remainder = n % 10;
+            reversedNumber = reversedNumber * 10 + remainder;
+            n /= 10;
+        }
+        if (originalNumber == reversedNumber)
+            System.out.println(originalNumber + " is a palindrome.");
+        else
+            System.out.println(originalNumber + " is not a palindrome.");
+        scanner.close();
+    }
+}
+
+
+
+
+
+
+Even-Odd:
+
+import java.util.Scanner;
+
+public class EvenOdd {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+        if (num % 2 == 0)
+            System.out.println(num + " is even.");
+        else
+            System.out.println(num + " is odd.");
+        scanner.close();
+    }
+}
+
+
+
+
+
+
+Prime Number:
+
+import java.util.Scanner;
+
+public class PrimeNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+        boolean isPrime = true;
+        if (num <= 1)
+            isPrime = false;
+        else {
+            for (int i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        }
+        if (isPrime)
+            System.out.println(num + " is a prime number.");
+        else
+            System.out.println(num + " is not a prime number.");
+        scanner.close();
+    }
+}
+
+
+
+
+
+Positive-Negative:
+
+import java.util.Scanner;
+
+public class PositiveNegative {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+        if (num > 0)
+            System.out.println(num + " is positive.");
+        else if (num < 0)
+            System.out.println(num + " is negative.");
+        else
+            System.out.println(num + " is zero.");
+        scanner.close();
+    }
+}

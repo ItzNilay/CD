@@ -1,0 +1,40 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+
+"int"           { printf("Keyword: int\n"); }
+"float"         { printf("Keyword: float\n"); }
+"if"            { printf("Keyword: if\n"); }
+"else"          { printf("Keyword: else\n"); }
+"for"           { printf("Keyword: for\n"); }
+"while"         { printf("Keyword: while\n"); }
+"return"        { printf("Keyword: return\n"); }
+"break"         { printf("Keyword: break\n"); }
+"continue"      { printf("Keyword: continue\n"); }
+"void"          { printf("Keyword: void\n"); }
+"char"          { printf("Keyword: char\n"); }
+"double"        { printf("Keyword: double\n"); }
+"long"          { printf("Keyword: long\n"); }
+"short"         { printf("Keyword: short\n"); }
+"signed"        { printf("Keyword: signed\n"); }
+"unsigned"      { printf("Keyword: unsigned\n"); }
+"include"       { printf("Keyword: include\n"); }
+"define"        { printf("Keyword: define\n"); }
+
+[0-9]+          { printf("Integer: %s\n", yytext); }
+[a-zA-Z_][a-zA-Z0-9_]* { printf("Identifier: %s\n", yytext); }
+
+[+-\/*=<>!]+    { printf("Operator: %s\n", yytext); }
+
+[ \t\n]         { /* Ignore whitespace and newline */ }
+
+.               { printf("Unknown: %s\n", yytext); }
+
+%%
+
+int main() {
+    yylex();
+    return 0;
+}

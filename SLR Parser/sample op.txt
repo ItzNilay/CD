@@ -1,0 +1,13 @@
+Stack           Input           Action
+---------------------------------------
+0               id + id * id$   Shift (State 2)
+0 id 2           + id * id$     Shift (State 4)
+0 id 2 + 4       id * id$       Reduce by T -> F (State 4)
+0 id 2 + 4 T 5   * id$          Shift (State 6)
+0 id 2 + 4 T 5 * id 6             Shift (State 2)
+0 id 2 + 4 T 5 * id 6 id 2          Shift (State 4)
+0 id 2 + 4 T 5 * id 6 id 2 + 4     Reduce by T -> F (State 5)
+0 id 2 + 4 T 5                         Reduce by E -> T (State 3)
+0 id 2 + 4                                 Shift (State 7)
+0 id 2 + 4 E 3                           Reduce by E -> T (State 1)
+0 id 2 + 4 S 1                           Accept

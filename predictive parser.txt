@@ -1,0 +1,40 @@
+def predictive_parsing(sentence, parsing_table, terminals, start_state="S", verbose=True):
+    def print_step(stack, inp, action):
+        if verbose:
+            print(f"{stack.ljust(20)} | {inp.ljust(20)} | {action}")
+
+    print_step("Stack", "Input", "Action")
+    print_step(f"{start_state}.$", sentence, "Initial")
+
+    stack = [start_state, "$"]
+    inp = sentence.split(".")
+   
+    while stack[0] != "$":
+        top_of_input = inp[0]
+
+        if stack[0] == top_of_input:
+            stack.pop(0)
+            inp.pop(0)
+            print_step("".join(stack), ".".join(inp), "Pop")
+            continue
+
+        try:
+            production = parsing_table[stack[0]][top_of_input]
+            print_step("".join(stack), ".".join(inp), f"{stack[0]} -> {production}")
+        except KeyError:
+            return "Not Accepted"
+
+        stack = production.split(".") + stack[1:]
+
+    print_step("".join(stack), ".".join(inp), "Accepted")
+    return "Accepted"
+
+if __name__ == "__main__":
+    parsing_table = {
+        "S": {"c": "C.C", "d": "C.C"},
+        "C": {"c": "c.C", "d": "d"}
+    }
+    terminals = ["c", "d"]
+    result = predictive_parsing(sentence="c.c.c.c.d.d.$", parsing_table=parsing_table, terminals=terminals, start_state="S", verbose=True)
+    print(result)
+
